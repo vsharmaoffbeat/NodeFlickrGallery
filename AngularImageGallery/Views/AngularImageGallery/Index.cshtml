@@ -1,0 +1,38 @@
+﻿@{
+    ViewBag.Title = "Index";
+}
+<main id="main" class="main" role="main">
+    <div ng-controller="angularGalleryController">
+        <div class="search">
+            <input type="text" ng-model="searchTag" class="blink" value="Search" />
+            <button type="button" ng-click="Search();" class="btn btn-primary">Search</button>
+        </div>
+        <div ng-show="IsLoading" class="text-center"><h1 ng-model="msgText">{{msgText}}</h1></div>
+        <div class="images">
+            <div class="image" ng-show="photos.items.length >0" ng-repeat="item in photos.items">
+                <div class="image-media" style="background-image: url('{{ item.media.m }}')"> </div>
+                <div class="image-content">
+                    <h2 class="image-title">
+                        <a href="#"> {{ item.title || 'No title provided.' }}</a>
+                    </h2>
+                    <ul class="image-info">
+                        <li>
+                            <a class="btnn" href="https://www.flickr.com/photos/{{ item.author_id }}" target="_blank">Photo author</a>
+                        </li>
+                        <li>
+                            Published Date: {{ item.published }}
+                        </li>
+                        <li>
+                            <a class="btnn" href="{{ item.link }}" target="_blank">View on Flickr</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            @*<div class="image" ng-show="photos.items.length <=0">
+                <div class="text-center">
+                    <h1 ng-model="msgText">{{msgText}}</h1>
+                </div>
+            </div>*@
+        </div>
+    </div>
+</main>
